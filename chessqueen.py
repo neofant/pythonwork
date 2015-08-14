@@ -1,5 +1,5 @@
 locqueen = (2,8)
-locknight = (5,8)
+locknight = (3,4)
 listqueen = []
 listknight = []
 queenx = locqueen[0]
@@ -39,16 +39,22 @@ def formlistqueen():
         listqueen.append((x,y))
 
 def formlistknight():
-    global listknight
-    listknight = [(3,4)]
+    global listknight, knightx, knighty
+    oqx = (-2,-2,-1,-1,1,1,2,2)
+    oqy = (-1,1,-2,2,-2,2,-1,1)
+    for i in range (0,8):
+        if ((knightx+oqx[i]) > 0) & ((knighty+oqy[i])>0) & ((knightx+oqx[i])<8) & ((knighty+oqy[i])<8):
+            listknight.append(((knightx+oqx[i]),(knighty+oqy[i])))
 
 def checkqueen():
-    print(queenx, queeny)
+    print("List of Queen")
     print(listqueen)
     if locknight in listqueen:
         print("Queen takes knight")
 
 def checkknight():
+    print("List of Knight")
+    print(listknight)
     if locqueen in listknight:
         print("Knight takes queen")
 
